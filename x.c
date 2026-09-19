@@ -47,7 +47,7 @@ typedef struct {
 } Key;
 
 /* Xresources preferences */
-enum XResType { STRING, INTEGER, FLOAT };
+enum XResType { STRING, INTEGER, FLOAT, DOUBLE };
 
 typedef struct {
 	const char *name;
@@ -2079,6 +2079,9 @@ xresload(const XResPref *resource)
 		break;
 	case FLOAT:
 		*(float *)resource->dst = strtof(ret.addr, NULL);
+		break;
+	case DOUBLE:
+		*(double *)resource->dst = strtod(ret.addr, NULL);
 		break;
 	}
 }
